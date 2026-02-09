@@ -15,7 +15,11 @@ class PublicacionModel {
 	public function showUserPost(Usuario $usuario) {
         	
         }
-	
+
+	public function showPostDetails(Publicacion $publicacion) {
+		
+	}
+
 	public function create(Publicacion $publicacion) {
         	
 	}

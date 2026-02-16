@@ -10,13 +10,13 @@ class PublicacionModel {
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $usuarios = [];
                 foreach ($resultado as $fila) {
-                        $usuarios[] = new Usuario($fila);
+                        $usuarios[] = new Publicacion($fila);
                 }
                 return $usuarios;
 	}
 	
 	public function getById($id) {
-        	$db = conectar();
+        	$db = connect();
                 $stmt = $db->prepare("SELECT * FROM publicacion WHERE id = :id");
                 $stmt->execute([':id' => $id]);
                 $fila = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -36,8 +36,21 @@ class PublicacionModel {
 	}
 
 	public function create(Publicacion $publicacion) {
-        	
+		try {
+			$db = connect();
+			$stmt = $db->prepare("INSERT into publicacion (idUnique, idUsuario, contenido, foto, fecha) VALUES (:idUnique, :idUsuario, :contenido, :foto, NOW())");
+			$stmt->execute([
+				':idUnique'	=> $publicacion->idUnique,
+				':idUsuario'     => $publicacion->idUsuario,
+				':contenido'     => $publicacion->contenido,
+				':foto'     => $publicacion->foto,
+			]);
+		
+		} catch (PDOException $e) {
+			throw new Exception("Error al guardar la publicación");
+		}
 	}
+		
 
 	public function editar($datos) {
 		

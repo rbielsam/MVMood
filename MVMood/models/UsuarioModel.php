@@ -36,9 +36,10 @@ class UsuarioModel {
 	}
 
 	public function buscarPorUUID(string $idUnique): {
-    		$sql = "SELECT * FROM usuarios WHERE uuid = :uuid LIMIT 1";
-    		$stmt = $this->db->prepare($sql);
-    		$stmt->execute([':uuid' => $uuid]);
+
+		$db = connect();
+    		$stmt = $db->prepare("SELECT * FROM usuarios WHERE idUnique = :idUnique LIMIT 1");
+    		$stmt->execute([':idUnique' => $idUnique]);
 
     		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}

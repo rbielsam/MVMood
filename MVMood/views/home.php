@@ -6,14 +6,6 @@
                 <a href="settings.php"><img src="images/user.png" class="profile-pic" alt="Profile Picture"></a>
             </div>
 
-            <!-- Stories -->
-            <div class="stories">
-                <div class="story"></div>
-                <div class="story"></div>
-                <div class="story"></div>
-                <div class="story"></div>
-                <div class="story"></div>
-            </div>
 
             <!-- Posts -->
             <div class="post">

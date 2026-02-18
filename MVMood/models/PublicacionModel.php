@@ -28,7 +28,15 @@ class PublicacionModel {
         }
 	
 	public function showUserPost(Usuario $usuario) {
-        	
+        	$db = connect();
+                $stmt = $db->prepare("SELECT * FROM publicacion WHERE idUnique = :idUnique");
+                $stmt->execute([':idUnique' => $usuario->idUnique]);
+		$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$publicaciones = [];
+		foreach ($resultado as $fila) {
+			$publicaciones[] = new Publicacion($fila);
+                }
+                return $publicaciones;
         }
 
 	public function showPostDetails(Publicacion $publicacion) {
@@ -56,8 +64,12 @@ class PublicacionModel {
 		
 	}
 	
-	public function delete($id) {
-        	
+	public function delete($idUnique) {
+        	$db = connect();
+			$stmt = $db->prepare("DELETE FROM tareas WHERE idUnique = :idUnique");            $stmt->execute([':id' => $id]);
+			$stmt->execute([
+				':idUnique'	=>	$idUnique
+			]);
 	}
 
 }

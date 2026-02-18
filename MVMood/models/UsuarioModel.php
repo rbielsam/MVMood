@@ -15,12 +15,23 @@ class UsuarioModel {
 		return $usuarios;
 	}
 
-	public function getById($id) {
+	public function getById($idUnique) {
 		
 	}
 
 	public function anadir(Usuario $usuario) {
-		
+		 $db = conectar();
+                $stmt = $db->prepare("
+                        INSERT INTO usuarios (usuario, password, rol)
+                        VALUES (:usuario, :password, :rol)
+                ");
+                $contrasena = $usuario->password;
+                $encriptado = password_hash($contrasena, PASSWORD_DEFAULT);
+                $stmt->execute([
+                        ':usuario'        => $usuario->usuario,
+                        ':password'       => $encriptado,
+                        ':rol'        => $usuario->rol
+                ]);
 	}
 
 	public function perfil(Usuario $usuario) {
@@ -28,19 +39,23 @@ class UsuarioModel {
 	}
 
 	public function update($datos = []) {
-	
-	}
-
-	public function cambiarNickname(Usuario $usuario) {
 		
 	}
 
-	public function buscarPorUUID(string $idUnique): {
-
+	public function cambiarNickname($datos = []) {
+		$db = conectar();
+		$stmt = $db->prepare("UPDATE usuario SET nickname = :nickname WHERE idUnique = :idUnique");
+		$stmt->execute([
+			':nickname'	=> $datos['nickname'],
+			':idUnique'	=> $datos['idUnique']
+		]);
+	}
+	
+	public function buscarPorIdUnique() {
 		$db = connect();
-    		$stmt = $db->prepare("SELECT * FROM usuarios WHERE idUnique = :idUnique LIMIT 1");
-    		$stmt->execute([':idUnique' => $idUnique]);
-
-    		return $stmt->fetch(PDO::FETCH_ASSOC);
+    	$stmt = $db->prepare("SELECT * FROM usuarios WHERE idUnique = :idUnique LIMIT 1");
+    	$stmt->execute([':idUnique' => $idUnique]);
+		$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    	return $resultado;
 	}
 }

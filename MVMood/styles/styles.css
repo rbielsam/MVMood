@@ -29,6 +29,8 @@ header {
     margin: 10px;
     width: 85%;
     padding: 5px;
+    border-radius: 3vh;
+    border-style: none;
 }
 
 .logoConfirmationCode {
@@ -50,6 +52,7 @@ header {
     padding-right: 15px;
     margin: 5px;
     width: 7rem;
+    border-style: none;
 }
 
 .div_container {

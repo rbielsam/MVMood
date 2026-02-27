@@ -1,11 +1,9 @@
-/* Shared stylesheet extracted from HTML files */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
 }
 
-/* Top Bar */
 .topbar {
     height: 70px;
     background-color: #ffffff;
@@ -39,12 +37,10 @@ body {
     color: #000;
 }
 
-/* Layout */
 .container {
     display: flex;
 }
 
-/* Sidebar */
 .sidebar {
     width: 200px;
     background-color: #ffffff;
@@ -75,13 +71,11 @@ body {
     bottom: 20px;
 }
 
-/* Main Content */
 .main {
     flex: 1;
     padding: 20px;
 }
 
-/* Search Bar Section */
 .search-section {
     display: flex;
     gap: 10px;
@@ -110,7 +104,6 @@ body {
     cursor: pointer;
 }
 
-/* Stories */
 .stories {
     background-color: #ffffff;
     padding: 10px;
@@ -118,17 +111,7 @@ body {
     border: 1px solid #ccc;
 }
 
-.story {
-    height: 70px; /* control the size */
-    aspect-ratio: 1.8;
-    --g: radial-gradient(50% 50%, #000 98%, #0000) no-repeat;
-    mask: var(--g) 100% 100%/30% 60%,var(--g) 70% 0/50% 100%,var(--g) 0 100%/36% 68%,var(--g) 27% 18%/26% 40%,linear-gradient(#000 0 0) bottom/67% 58% no-repeat;
-    background: #ddd;
-    display: inline-block;
-    margin-right: 10px;
-}
 
-/* Post */
 .post {
     background-color: #ffffff;
     padding: 15px;
@@ -140,7 +123,6 @@ body {
     margin: 0 0 10px 0;
 }
 
-/* Create Post specific */
 .create-post {
     background-color: #ffffff;
     padding: 20px;
@@ -193,7 +175,6 @@ body {
     display: none;
 }
 
-/* Messages specific */
 .message-item {
     background-color: #ffffff;
     padding: 15px;
@@ -249,7 +230,6 @@ body {
 
 h2 { color: #333; margin-top: 0; }
 
-/* Notifications specific */
 .notification {
     background-color: #ffffff;
     padding: 15px;
@@ -263,7 +243,6 @@ h2 { color: #333; margin-top: 0; }
 .notification-time { font-size: 0.85em; color: #999; margin-top: 5px; }
 .notification.unread { background-color: #f0f8ff; }
 
-/* Settings specific */
 .settings-section {
     background-color: #ffffff;
     padding: 20px;
@@ -283,10 +262,9 @@ h2 { color: #333; margin-top: 0; }
 .option-btn.danger { background-color: #f8d7da; border-color: #f5c6cb; color: #721c24; }
 .option-btn.danger:hover { background-color: #f1aeb5; }
 
-/* Utility class for inline meta blocks */
 .meta-flex { display: flex; gap: 10px; align-items: center; }
 
-/* Post header, avatar, meta and actions */
+
 .post-header {
     display: flex;
     gap: 12px;
@@ -334,4 +312,3 @@ h2 { color: #333; margin-top: 0; }
 .action-btn:hover { background-color: #f0f0f0; color: #000; }
 
 .tagged, .location { display: inline-block; margin-right: 8px; }
-

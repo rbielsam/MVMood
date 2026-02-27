@@ -1,9 +1,8 @@
-<?php $title = 'Messages - MVM Mood'; include 'includes/header.php'; ?>
+<?php $title = 'Messages - MVM Mood'; include 'header.php'; ?>
 
             <div class="main">
             <h2>Messages</h2>
 
-            <!-- Sample Messages -->
             <div class="message-item unread">
                 <div class="message-header">
                     <h4>Sofia Martinez</h4>
@@ -51,4 +50,4 @@
             </div>
             </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'footer.php'; ?>

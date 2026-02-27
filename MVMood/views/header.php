@@ -9,8 +9,6 @@ if (!isset($title)) { $title = 'MVM Mood'; }
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-
-    <!-- Top Bar -->
     <div class="topbar">
         <img src="images/mockup-with-colours.png" alt="MVM Mood Logo">
 
@@ -20,22 +18,18 @@ if (!isset($title)) { $title = 'MVM Mood'; }
         </div>
     </div>
 
-    <!-- Main Layout -->
     <div class="container">
-
-        <!-- Sidebar -->
         <div class="sidebar">
-            <a href="index.php" class="<?= (basename($_SERVER['PHP_SELF']) === 'index.php') ? 'active' : '' ?>">Home</a>
-            <a href="notifications.php" class="<?= (basename($_SERVER['PHP_SELF']) === 'notifications.php') ? 'active' : '' ?>">Notifications</a>
-            <a href="messages.php" class="<?= (basename($_SERVER['PHP_SELF']) === 'messages.php') ? 'active' : '' ?>">Messages</a>
-            <a href="create.php" class="<?= (basename($_SERVER['PHP_SELF']) === 'create.php') ? 'active' : '' ?>">Create</a>
+            <a href="index.php?controller=Publicaciones&action=index">Home</a>
+            <a href="index.php?controller=Publicaciones&action=notificaciones">Notifications</a>
+            <a href="index.php?controller=Publicaciones&action=mensages">Messages</a>
+            <a href="index.php?controller=Publicaciones&action=crear">Create</a>
+            <a href="index.php?controller=Usuarios&action=perfil">Profile</a>
             <a href="#">Language</a>
             <a href="#">Theme</a>
 
             <div class="logout">
-                <a href="#">Log out</a>
+                <a href="index.php?controller=Auth&action=logout">Log out</a>
             </div>
         </div>
-
-        <!-- Main Content -->
         <div class="main">

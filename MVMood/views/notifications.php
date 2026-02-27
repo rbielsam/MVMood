@@ -1,9 +1,8 @@
-<?php $title = 'Notifications - MVM Mood'; include 'includes/header.php'; ?>
+<?php $title = 'Notifications - MVM Mood'; include 'header.php'; ?>
 
             <div class="main">
             <h2>Notifications</h2>
 
-            <!-- Sample Notifications -->
             <div class="notification unread">
                 <h4>Sofia Martinez liked your post</h4>
                 <p>Sofia Martinez liked your post about the institution's new event.</p>

@@ -1,0 +1,97 @@
+body {
+    background-color: #FFFF;
+}
+
+.dark-mode {
+    background-color: #333333;
+    color: #FFFF;
+}
+
+header {
+    height: 60px;
+    width: 100%;   
+}
+
+.header-content {
+    display: flex;
+    width: 90vw;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 20px
+}
+
+#mode-icon, #languaje-icon{
+    cursor: pointer;
+}
+
+.imputs {
+    background-color: #87A6F5;
+    margin: 10px;
+    width: 85%;
+    padding: 5px;
+}
+
+.logoConfirmationCode {
+    max-width: 100%;
+    height: auto;
+}
+
+.logoSignUp {
+    max-width: 100%;
+    height: auto;
+}
+
+.logIn_button, .signUp_button, .resetPassword_button, .confirm_button {
+    border-radius: 20px;
+    background-color: #87A6F5;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 5px;
+    width: 7rem;
+}
+
+.div_container {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr;*/
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    background-color: #F2F2F2;
+    height: 75vh;
+    width: 90vw;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 5vh;
+}
+
+.dark-mode .div_container {
+    background-color: #2A2A2A;
+    color: #7Ba6FF;
+}
+
+.left_section, .right_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0;
+}
+
+footer {
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #87A6F5;
+    /*background-color: #5650FA;*/
+    position: fixed;
+    text-align: center;
+}
+
+.dark-mode footer {
+    /*background-color: #2F2F4F;*/
+    background-color: #87A6F5;
+    color: #FFFF;
+}

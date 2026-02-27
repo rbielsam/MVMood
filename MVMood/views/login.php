@@ -21,21 +21,20 @@
         </section>
 
         <section class="right_section">
+            <div id="login_content">
+                <form action="index.php?controller=Auth&action=loginProcess" method="POST">
+                    <input type="text" name="email" placeholder="email" class="imputs"/><br/>
+                    <input type="password" name="password" placeholder="password" class="imputs"/><br/><br/>
+                    <input type="submit" name="logIn" value="log in" class="logIn_button"/><br/>
+                    
+                </form>
+                <form action="index.php?controller=Usuarios&action=signUp" method="POST">
+                    <input type="submit" name="signUp" value="sign up" class="signUp_button"/><br/><br/>
+                </form>
 
-            <form action="index.php?controller=Auth&action=loginProcess" method="POST">
-                <input type="text" name="email" placeholder="email" class="imputs"/><br/>
-                <input type="password" name="password" placeholder="password" class="imputs"/><br/><br/>
-                <input type="submit" name="logIn" value="log in" class="logIn_button"/><br/>
-                
-            </form>
-            <form action="index.php?controller=Usuarios&action=signUp" method="POST">
-                <input type="submit" name="signUp" value="sign up" class="signUp_button"/><br/><br/>
-            </form>
-
-            <a href="index.php?controller=Usuarios&action=newPassword">forgot password?</a><br/>
-
+                <a href="index.php?controller=Usuarios&action=newPassword">forgot password?</a><br/>
+            </div>
         </section>
-
         
     </div>
 

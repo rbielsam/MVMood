@@ -25,12 +25,19 @@ header {
 }
 
 .imputs {
-    background-color: #87A6F5;
+    /*background-color: #bbd0Fb;*/
+    background-color: #C7DBFC;
     margin: 10px;
-    width: 85%;
+    height: 2rem;
+    width: 20rem;
     padding: 5px;
+    border: 1px solid #5877CC;
     border-radius: 3vh;
-    border-style: none;
+    /*border-style: none;*/
+}
+
+.imputs:hover {
+    border: 1px solid #203C8F;
 }
 
 .logoConfirmationCode {
@@ -53,6 +60,7 @@ header {
     margin: 5px;
     width: 7rem;
     border-style: none;
+    cursor: pointer;
 }
 
 .div_container {
@@ -83,7 +91,7 @@ header {
 }
 
 footer {
-    height: 60px;
+    height: 10%;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -91,10 +99,30 @@ footer {
     /*background-color: #5650FA;*/
     position: fixed;
     text-align: center;
+    border-top: 1px solid #5877CC;
 }
 
 .dark-mode footer {
     /*background-color: #2F2F4F;*/
     background-color: #87A6F5;
+    color: #FFFF;
+}
+
+#login_content {
+    background-color: #FFFF;
+    border-radius: 3vh;
+    height: 50vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dark-mode #login_content {
+    background-color: #333333;
+    color: #FFFF;
+}
+
+.dark-mode a {
     color: #FFFF;
 }

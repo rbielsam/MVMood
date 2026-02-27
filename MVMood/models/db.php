@@ -7,7 +7,7 @@ function conectar() {
 	];
 
 	return new PDO(
-    	"mysql:host=localhost;dbname=mvmmood;charset=utf8mb4",
+    	"mysql:host=localhost;dbname=mvm;charset=utf8mb4",
     	"web",
     	"1234",
     	$opciones

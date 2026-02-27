@@ -38,7 +38,7 @@
 
         <section class="right_section">
 
-            <img class="logoSignUp" src="images/imgLogo.png"/>
+            <img class="logoSignUp" src="images/imgLogo.png" width="100" height="100"/>
 
             <form action="index.php?controller=Usuarios&action=signUpProcess" method="POST">
                 <input type="text" name="nickname" placeholder="username" class="imputs"/><br/>
@@ -50,7 +50,7 @@
             </form>
 
         </section>
-        
+
 
     </div>
 

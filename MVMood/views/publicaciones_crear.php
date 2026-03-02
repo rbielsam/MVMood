@@ -10,13 +10,10 @@ include 'header.php';
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($title) ?></title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
-
-
- 
         <div class="main">
             <div class="create-post">
                 <h2>Create a New Post</h2>

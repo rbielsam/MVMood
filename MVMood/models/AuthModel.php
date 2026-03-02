@@ -8,7 +8,7 @@ class AuthModel {
     	$db = conectar();
 
     	$stmt = $db->prepare(
-        	"SELECT * FROM usuarios WHERE email = :email"
+        	"SELECT * FROM usuario WHERE email = :email"
     	);
     	$stmt->execute([':email' => $email]);
     	$user = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -23,26 +23,28 @@ class Validacion {
 
     	if (empty($datos['email'])) {
         	$errores[] = "El email es obligatorio";
-    	}
-
-	if (filter_var($datos['email'], FILTER_VALIDATE_EMAIL)) {
-		$partes = explode('@', $datos['email']);
-    		$dominio = strtolower($partes[1]);
-
-    		if ($dominio !== 'institutmvm.cat') {
-        		$errores[] = "El email debe acabar con @institutmvm.cat";
-    		}
-	}
-
-    	if (empty($datos['nickname'])) {
+    	}else{
+			$dominio = strrchr($datos['email'], "@");
+			if($dominio != "@institutmvm.cat"){
+				$errores[] = "El email debe acabar con '@institutmvm.cat'";
+			}
+		}
+		
+		//if (!strrchr($datos['email'], "@") === "institutmvm.cat") {
+		//	$errores[] = "El email debe acabar con '@institutmvm.cat'";
+		//} 
+		
+		if (empty($datos['nickname'])) {
         	$errores[] = "El nickname es obligatorio";
     	}
-
-    	if (empty($datos['password'])) {
+		
+		if (empty($datos['password'])) {
         	$errores[] = "La contraseña es obligatoria";
-    	}
-
-    	if (!empty($datos['password']) && strlen($datos['password']) < 6) {
+    	} elseif (!empty($datos['password'])) {
+			if($datos['password'] != $datos['repeatPassword']){
+				$errores[] = "las contraseñas no corresponden";
+			}		
+		} elseif (!empty($datos['password']) && strlen($datos['password']) < 6) {
         	$errores[] = "La contraseña debe tener al menos 6 caracteres";
     	}
 

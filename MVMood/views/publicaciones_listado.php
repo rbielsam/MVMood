@@ -31,8 +31,8 @@ include 'header.php';
         	<div class="post-content"><?= nl2br(htmlspecialchars($p['contenido'])) ?></div>
         	<div class="post-actions">
             	<?php if ($_SESSION['rol']=='admin' || $p['idUsuario'] == $_SESSION['id'] and ACL::puede('publicaciones.eliminar') ): ?>
-                	<a href="index.php?controller=Publicaciones&action=editar_publicacion&id=<?= $p['id'] ?>" class="action-btn">Editar</a>
-                	<a href="index.php?controller=Publicaciones&action=eliminar&id=<?= $p['id'] ?>" class="action-btn" onclick="return confirm('¿Seguro que quieres eliminar esta publicación?')">Eliminar</a>
+                	<a href="index.php?controller=Publicaciones&action=editar_publicacion&id=<?= $p['id'] ?>" class="action-btn">✏️ Editar</a>
+                	<a href="index.php?controller=Publicaciones&action=eliminar&id=<?= $p['id'] ?>" class="action-btn" onclick="return confirm('¿Seguro que quieres eliminar esta publicación?')">🗑️ Eliminar</a>
             	<?php endif; ?>
         	</div>
     	</div>

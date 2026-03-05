@@ -1,4 +1,4 @@
-<?php $title = 'Messages - MVM Mood'; include 'header.php'; ?>
+<?php $title = 'Messages - MVM Mood'; include 'layout.php'; ?>
 
             <div class="main">
             <h2>Messages</h2>

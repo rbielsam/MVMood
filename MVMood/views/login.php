@@ -9,8 +9,9 @@
 <body class="light-mode">
     <header>
         <div class="header-content">
-            <img id="languaje-icon" src="images/tierra.png" alt="Mode icon" width="32" height="32">
-            <img id="mode-icon" src="images/modo-oscuro.png" alt="Mode icon" width="32" height="32">
+            <!--width="32" height="32"-->
+            <img id="languaje-icon" src="images/tierra.png" alt="Mode icon">
+            <img id="mode-icon" src="images/modo-oscuro.png" alt="Mode icon">
         </div>
     </header>
 
@@ -23,6 +24,7 @@
         <section class="right_section">
             <div id="login_content">
                 <form action="index.php?controller=Auth&action=loginProcess" method="POST">
+                    <p>Iniciar sesión en MVMood</p>
                     <input type="text" name="email" placeholder="email" class="imputs"/><br/>
                     <input type="password" name="password" placeholder="password" class="imputs"/><br/><br/>
                     <input type="submit" name="logIn" value="log in" class="logIn_button"/><br/>

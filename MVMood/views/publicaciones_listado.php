@@ -1,6 +1,6 @@
 <?php 
 $title = 'Home - MVM Mood'; 
-include 'header.php'; 
+include 'layout.php'; 
 
 ?>
 <?php if (!empty($_SESSION['mensaje'])): ?>

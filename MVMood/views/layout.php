@@ -23,11 +23,14 @@ if (!isset($title)) { $title = 'MVM Mood'; }
             <a href="index.php?controller=Publicaciones&action=index">Home</a>
             <a href="index.php?controller=Publicaciones&action=notificaciones">Notifications</a>
             <a href="index.php?controller=Publicaciones&action=mensages">Messages</a>
-            <a href="index.php?controller=Publicaciones&action=crear">Create</a>
+
             <?php if($_SESSION['rol'] != 'admin'): ?>
                 <a href="index.php?controller=Publicaciones&action=crear">Create</a>
-            <?php endif; ?>            <a href="#">Language</a>
-            <a href="#">Theme</a>
+            <?php endif; ?>
+
+
+            <a href="index.php?controller=Usuarios&action=perfil">Profile</a>
+
 
             <div class="logout">
                 <a href="index.php?controller=Auth&action=logout">Log out</a>

@@ -1,7 +1,7 @@
 <?php
 $title = 'Create Post - MVM Mood';
 require_once "models/ACL.php";
-include 'header.php';
+include 'layout.php';
 
 
 ?>

@@ -1,4 +1,4 @@
-<?php $title = 'Settings - MVM Mood'; include 'includes/header.php'; ?>
+<?php $title = 'Settings - MVM Mood'; include 'layout.php'; ?>
 
             <div class="main">
             <div class="settings-section">

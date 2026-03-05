@@ -1,6 +1,6 @@
 <?php 
 $title = 'Home - MVM Mood'; 
-include 'header.php'; 
+include 'layout.php'; 
 
 echo "aquí es para ver el perfil";
 

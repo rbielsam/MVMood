@@ -27,7 +27,6 @@
     <div class="div_container">
 
         <section class="left_section">
-            <!--<img class="logoSignUp" src="images/imgLogo.png"/>-->
             <iframe class="logoSignUp" src="views/terminosYCondiciones.html" title="description"></iframe> 
 
             <form action="index.php?controller=Usuarios&action=signUpProcess" method="POST">

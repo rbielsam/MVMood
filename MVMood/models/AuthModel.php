@@ -18,5 +18,6 @@ class AuthModel {
     	}
     	return false;
 	}
+	
 }
 ?>

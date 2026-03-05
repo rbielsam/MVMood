@@ -30,8 +30,7 @@ if (!isset($title)) { $title = 'MVM Mood'; }
 
 
             <a href="index.php?controller=Usuarios&action=perfil">Profile</a>
-            <a href="#">Language</a>
-            <a href="#">Theme</a>
+
 
             <div class="logout">
                 <a href="index.php?controller=Auth&action=logout">Log out</a>

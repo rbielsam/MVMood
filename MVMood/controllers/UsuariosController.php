@@ -56,7 +56,7 @@ class UsuariosController {
     	$publicaciones = $modeloPublicaciones->getByUsuario($id);
 	
 
-    	require "views/usuarios_profile.php";
+    	require "views/usuario_profile.php";
 	}
 
 

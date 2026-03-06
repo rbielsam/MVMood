@@ -15,7 +15,7 @@ body {
 
 .dark-mode {
     background-color: #333333;
-    color: #FFF;
+    /*color: #FFF;*/
 }
 
 header {
@@ -37,11 +37,17 @@ header {
     min-width: 32px;
 }
 
+.imgLogo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .imputs {
     /*background-color: #bbd0Fb;*/
     background-color: #C7DBFC;
     margin: 10px;
-    height: 2rem;
+    height: 2.5rem;
     width: 80%;
     padding: 5px;
     border: 1px solid #5877CC;
@@ -59,8 +65,10 @@ header {
 }
 
 .logoSignUp {
-    max-width: 100%;
-    height: auto;
+    /*max-width: 100%;
+    height: auto;*/
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .logIn_button, .signUp_button, .resetPassword_button, .confirm_button {
@@ -118,13 +126,7 @@ footer {
     font-size: 0.75em;
 }
 
-.dark-mode footer {
-    /*background-color: #2F2F4F;*/
-    background-color: #87A6F5;
-    color: #FFF;
-}
-
-#login_content {
+.login_content {
     background-color: #FFF;
     border-radius: 3vh;
     max-height: 90%;
@@ -136,9 +138,17 @@ footer {
     padding-bottom: 20px;
 }
 
-.dark-mode #login_content {
+.login_content .logoSignUp {
+    align-self: center;
+}
+
+.dark-mode .login_content {
     background-color: #333333;
     color: #FFF;
+}
+
+.p_login {
+    font-size: 0.80em;
 }
 
 a {
@@ -147,4 +157,14 @@ a {
 
 .dark-mode a {
     color: #FFF;
+}
+
+.terms_conditions {
+    background-color: #FFF;
+    max-width: 300px;
+    max-height: 400px;
+}
+
+.dark-mode .terms_conditions {
+    background-color: #87A6F5;
 }

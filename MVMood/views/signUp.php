@@ -27,26 +27,29 @@
     <div class="div_container">
 
         <section class="left_section">
-            <iframe class="logoSignUp" src="views/terminosYCondiciones.html" title="description"></iframe> 
+            <iframe class="terms_conditions" src="views/terminosYCondiciones.html" title="description"></iframe><br/>
 
             <form action="index.php?controller=Usuarios&action=signUpProcess" method="POST">
-                <input type="checkbox" name="signUp"/>
-                <input type="submit" name="signUp" value="Accept" class="signUp_button"/><br/><br/>
+                <input type="checkbox" name="signUp"/><label>   I accept</label>
             </form>
         </section>
 
         <section class="right_section">
 
-            <img class="logoSignUp" src="images/imgLogo.png" width="100" height="100"/>
+            <div class="login_content">
+<!--width="100" height="100"-->
+                <img class="logoSignUp" src="images/imgLogo.png" /><br/>
 
-            <form action="index.php?controller=Usuarios&action=signUpProcess" method="POST">
-                <input type="text" name="nickname" placeholder="username" class="imputs"/><br/>
-                <input type="text" name="email" placeholder="email" class="imputs"/><br/>
-                <input type="password" name="password" placeholder="password" class="imputs"/><br/><br/>
-                <input type="password" name="repeatPassword" placeholder="repeat password" class="imputs"/><br/>
-                <input type="date" name="dateOfBirth" placeholder="date of birth" class="imputs"/><br/>
-                <input type="submit" name="signUp" value="sign up" class="signUp_button"/><br/><br/>
-            </form>
+                <form action="index.php?controller=Usuarios&action=signUpProcess" method="POST">
+                    <input type="text" name="nickname" placeholder="username" class="imputs"/><br/>
+                    <input type="text" name="email" placeholder="email" class="imputs"/><br/>
+                    <input type="password" name="password" placeholder="password" class="imputs"/><br/>
+                    <input type="password" name="repeatPassword" placeholder="repeat password" class="imputs"/><br/>
+                    <input type="date" name="dateOfBirth" placeholder="date of birth" class="imputs"/><br/><br/>
+                    <input type="submit" name="signUp" value="sign up" class="signUp_button"/><br/><br/>
+                </form>
+
+            </div>
 
         </section>
 

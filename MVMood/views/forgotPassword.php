@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <title>MVMood - Forgot password?</title>
 </head>
 <body>
@@ -22,10 +22,12 @@
 
         <section class="right_section">
 
-            <form action="" method="POST">
-                <input type="text" name="email" placeholder="email" class="imputs"/><br/>
-                <input type="submit" name="reset-password" value="Reset password" class="resetPassword_button"/><br/><br/>
-            </form>
+            <div class="login_content">
+                <form action="" method="POST">
+                    <input type="text" name="email" placeholder="email" class="imputs"/><br/>
+                    <input type="submit" name="reset-password" value="Reset password" class="resetPassword_button"/><br/><br/>
+                </form>
+            </div>
 
         </section>
 

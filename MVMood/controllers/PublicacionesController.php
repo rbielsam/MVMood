@@ -20,8 +20,11 @@ class PublicacionesController {
 
     	if (isset($_POST['content'])) {
         	$datos = [
-            	'idUsuario' => (int) $_SESSION['id'],
-            	'contenido' => $_POST['content']
+                    'idUnique' => uniqid('p',true),
+            	    'idUsuario' => $_SESSION['id'],
+            	    'contenido' => $_POST['content'],
+                    'foto' => null,
+                    'fecha' => date('Y-m-d H:i:s')
         	];
 
         	$errores = Validacion::validarPublicacion($datos);
@@ -31,14 +34,8 @@ class PublicacionesController {
             	header("Location: index.php?controller=Publicaciones&action=crear");
             	exit;
         	}
-
-        	require_once 'models/Publicacion.php';
-            $publicacion            = new Publicacion();
-            $publicacion->idUnique  = uniqid('p', true);
-            $publicacion->idUsuario = $datos['idUsuario'];
-            $publicacion->contenido = $datos['contenido'];
-            $publicacion->foto      = null;
-            $publicacion->fecha     = date('Y-m-d H:i:s');
+        	
+                $publicacion = new Publicacion($datos);
         	$modelo = new PublicacionesModel();
         	$modelo->save($publicacion);
 

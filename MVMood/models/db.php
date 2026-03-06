@@ -7,9 +7,9 @@ function conectar() {
 	];
 
 	return new PDO(
-    	"mysql:host=localhost;dbname=mvm;charset=utf8mb4",
-    	"web",
-    	"1234",
+    	"mysql:host=localhost;dbname=mvmood;charset=utf8mb4",
+    	"mymvmoodca",
+    	"123Institut456$",
     	$opciones
 	);
 }

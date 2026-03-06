@@ -1,6 +1,6 @@
 <?php 
 $title = 'Home - MVM Mood'; 
-include 'layout.php'; 
+include 'header.php'; 
 
 ?>
 <?php if (!empty($_SESSION['mensaje'])): ?>
@@ -30,10 +30,12 @@ include 'layout.php';
         	</div>
         	<div class="post-content"><?= nl2br(htmlspecialchars($p['contenido'])) ?></div>
         	<div class="post-actions">
-            	<?php if ($_SESSION['rol']=='admin' || $p['idUsuario'] == $_SESSION['id'] and ACL::puede('publicaciones.eliminar') ): ?>
-                	<a href="index.php?controller=Publicaciones&action=editar_publicacion&id=<?= $p['id'] ?>" class="action-btn">✏️ Editar</a>
-                	<a href="index.php?controller=Publicaciones&action=eliminar&id=<?= $p['id'] ?>" class="action-btn" onclick="return confirm('¿Seguro que quieres eliminar esta publicación?')">🗑️ Eliminar</a>
-            	<?php endif; ?>
+            	<?php if ($p['idUsuario'] == $_SESSION['id'] and ACL::puede('publicaciones.editar') ): ?>
+                        <a href="index.php?controller=Publicaciones&action=editar_publicacion&id=<?= $p['idUnique'] ?>" class="action-btn">Editar</a>
+                <?php endif; ?>
+                <?php if ($_SESSION['rol']=='admin' || $p['idUsuario'] == $_SESSION['id'] and ACL::puede('publicaciones.eliminar') ): ?>
+                        <a href="index.php?controller=Publicaciones&action=eliminar&id=<?= $p['idUnique'] ?>" class="action-btn" onclick="return confirm('¿Seguro que quieres eliminar esta publicación?')">Eliminar</a>
+                <?php endif; ?>
         	</div>
     	</div>
 	<?php endforeach; ?>

@@ -15,7 +15,7 @@ class AuthController {
     	$user = $model->login($email, $password);
 
     	if ($user) {
-        	$_SESSION['id']       = $user['id'];
+        	$_SESSION['id']       = $user['idUnique'];
         	$_SESSION['nickname'] = $user['nickname'];
         	$_SESSION['email']    = $user['email'];
         	$_SESSION['rol']      = $user['rol'];
@@ -29,8 +29,6 @@ class AuthController {
     	header("Location: index.php?controller=Auth&action=login");
     	exit;
 	}
-
-	
 
 	public function logout() {
     	session_destroy();

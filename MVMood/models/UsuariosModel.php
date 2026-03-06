@@ -17,8 +17,8 @@ class UsuariosModel {
 
 	public function getById($id) {
     	$db = conectar();
-    	$stmt = $db->prepare("SELECT * FROM usuario WHERE id = :id");
-    	$stmt->execute([':id' => $id]);
+    	$stmt = $db->prepare("SELECT * FROM usuario WHERE idUnique = :idUnique");
+    	$stmt->execute([':idUnique' => $id]);
     	$fila = $stmt->fetch(PDO::FETCH_ASSOC);
     	if ($fila) {
         	return new Usuario($fila);
@@ -33,7 +33,7 @@ class UsuariosModel {
         	VALUES (:idUnique, :email, :nickname, :foto, :password, :rol)
     	");
     	$stmt->execute([
-			':idUnique'	=> $usuario->idUnique, 
+		':idUnique' => $usuario->idUnique, 
         	':email'    => $usuario->email,
         	':nickname' => $usuario->nickname,
         	':foto'     => $usuario->foto,
@@ -42,18 +42,18 @@ class UsuariosModel {
     	]);
 	}
 
-	public function update() {
+	public function update(Usuario $usuario) {
     	
 	}
 
-	public function cambiarPassword() {
+	public function cambiarPassword(Usuario $usuario) {
     	
 	}
 
 	public function delete($id) {
     	$db = conectar();
-    	$stmt = $db->prepare("DELETE FROM usuario WHERE id = :id");
-    	$stmt->execute([':id' => $id]);
+    	$stmt = $db->prepare("DELETE FROM usuario WHERE idUnique = :idUnique");
+    	$stmt->execute([':idUnique' => $id]);
 	}
 }
 ?>

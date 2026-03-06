@@ -28,10 +28,6 @@ if (!isset($title)) { $title = 'MVM Mood'; }
                 <a href="index.php?controller=Publicaciones&action=crear">Create</a>
             <?php endif; ?>
 
-
-            <a href="index.php?controller=Usuarios&action=perfil">Profile</a>
-
-
             <div class="logout">
                 <a href="index.php?controller=Auth&action=logout">Log out</a>
             </div>

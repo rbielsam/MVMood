@@ -15,18 +15,21 @@ class User extends Authenticatable
 
     protected $table = 'usuario';
     protected $primaryKey = 'idUnique';
-
+    protected $keyType = 'string';
+    public $incrementing = false;
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
+        'idUnique',
         'nickname',
         'email',
         'password',
         'rol',
         'foto',
+        'dateOfBirth',
     ];
 
     /**
@@ -48,7 +51,8 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
+            'dateOfBirth'       => 'date',
         ];
     }
 }

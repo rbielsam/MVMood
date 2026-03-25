@@ -11,10 +11,10 @@ class AuthController extends Controller
     public function showLogin()
     {
         if (Auth::check()) {
-            return redirect()->route('home');
+            return redirect()->route('publicaciones.home');
         }
 
-        return view('login');
+        return view('inicio.login');
     }
 
     public function login(Request $request)
@@ -33,7 +33,7 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('home'));
+            return view('publicaciones.home');
         }
 
         return back()
@@ -42,6 +42,7 @@ class AuthController extends Controller
             ])
             ->onlyInput('email');
     }
+
 
     public function logout(Request $request)
     {

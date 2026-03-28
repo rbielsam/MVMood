@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class PublicacionesController extends Controller
 {
     public function index() {
-        $todasLasPubicaciones = Publicacion::all()
-            ->orderBy('created_at', 'desc')
-            ->get();
-
+        //$todasLasPubicaciones = Publicacion::all()
+        //    ->orderBy('created_at', 'desc')
+        //    ->get();
+//, ['publicaciones' => $todasLasPubicaciones]
         // Enviem les dades a la vista (com el ModelAndView)
-        return view('home', ['publicaciones' => $todasLasPubicaciones]);
+        return view('publicaciones.home');
     }
 
     public function crear()

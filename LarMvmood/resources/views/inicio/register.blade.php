@@ -23,6 +23,13 @@
     <span role="alert">{{ $message }}</span>
     @enderror
 
+    <label for="nickname">Nickname</label>
+    <input type="text" name="nickname" id="email" value="{{ old('nickname') }}">
+
+    @error('nickname')
+    <span role="alert">{{ $message }}</span>
+    @enderror
+
     <label for="password">Password</label>
     <input type="password" name="password" id="password">
 

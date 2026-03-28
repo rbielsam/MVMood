@@ -24,6 +24,9 @@
     <div>
         <button type="submit">Log in</button>
     </div>
+
+
 </form>
+<a href="/signup">Sign Up</a>
 </body>
 </html>

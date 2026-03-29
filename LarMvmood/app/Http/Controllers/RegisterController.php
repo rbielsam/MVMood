@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|ends_with:@institutmvm.cat|string|max:255|email|unique:users',
+            'nickname' => 'required|string|max:255|unique:usuario,nickname',
+            'email' => 'required|ends_with:@institutmvm.cat|string|max:255|email|unique:usuario',
             'password' => 'required|string|min:6|confirmed'
         ]);
 
@@ -28,9 +30,13 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+        event(new Registered($user));
 
-        return view('inicio.login')
+        auth()->login($user);
+
+        return redirect('/mail/verify')->with('message', '¡Revisa tu correo para verificar tu cuenta!');
+        /*return view('inicio.login')
             ->with('status',
-                'Registration successful, you can now log in');
+                'Registration successful, you can now log in');*/
     }
 }

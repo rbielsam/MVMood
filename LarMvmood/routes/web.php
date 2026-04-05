@@ -23,16 +23,7 @@ Route::post('/publicaciones', [PublicacionesController::class, 'index']);
 
 Route::get('/sendMail', [EmailsController::class, 'WelcomeEmail']);
 
-Route::get('/email/verify', function () {
-    return view('mail.verifyEmail');
-})->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill(); // marca el email como verificado
-    return redirect('/mvmood'); // o la ruta que quieras
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify', [RegisterController::class, 'showVerification'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [RegisterController::class, 'verifyEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
 
-// Reenviar correo de verificación
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    return back()->with('message', '¡Link de verificación enviado!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::post('/email/verification-notification', [RegisterController::class, 'resendVerification'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

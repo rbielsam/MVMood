@@ -9,13 +9,6 @@
 <form method="post" action="/signup">
     @csrf
 
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" value="{{ old('name') }}">
-
-    @error('name')
-    <span role="alert">{{ $message }}</span>
-    @enderror
-
     <label for="email">Email</label>
     <input type="email" name="email" id="email" value="{{ old('email') }}">
 

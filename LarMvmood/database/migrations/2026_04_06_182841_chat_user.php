@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('chat_user', function (Blueprint $table) {
             $table->id();
-            $table->uuid('id_unique')->unique();
-            $table->string('nombre')->nullable();
-            $table->boolean('es_grupal')->default(false);
+            $table->foreingId('chat_id')->constrained('chats');
+            $table->foreingId('user_id')->constrained('usuario');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chats');
+        //
     }
 };

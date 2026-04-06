@@ -13,7 +13,8 @@ class PublicacionesController extends Controller
         //    ->orderBy('created_at', 'desc')
         //    ->get();
 //, ['publicaciones' => $todasLasPubicaciones]
-        // Enviem les dades a la vista (com el ModelAndView)
+
+        //$comentarios = Comentario:all()
         return view('publicaciones.home');
     }
 

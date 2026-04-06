@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comentarios', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary('comentario_id');
+            $table->uuid('user_id')->index();
+            $table->string('contenido');
+            $table->foreign('publicacion_id')->references('publicacion_id')->on('publicacions');
+            $table->timestamp('fecha_publicacion');
             $table->timestamps();
         });
     }

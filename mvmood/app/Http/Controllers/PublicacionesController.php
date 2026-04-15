@@ -18,16 +18,16 @@ class PublicacionesController extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            'content' => ['required', 'max:500'],
+            'contenido' => ['required', 'max:500'],
         ], [
-            'content.required' => 'Es necesario ingresar un contenido',
-                'content.max' => 'El contenido no debe superar 500 caracteres',
+            'contenido.required' => 'Es necesario ingresar un contenido',
+                'contenido.max' => 'El contenido no debe superar 500 caracteres',
             ]
         );
 
         Publicacion::create([
             'user_id'   => Auth::id(),
-            'contenido' => $request->input('content'),
+            'contenido' => $request->input('contenido'),
             'imagen'     => null,
         ]);
 

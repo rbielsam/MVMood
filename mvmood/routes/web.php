@@ -1,13 +1,20 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PublicacionesController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/amvmood', [LoginController::class, 'showLogin']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/amvmood', [RegisterController::class, 'showForm']);
+Route::get('/register', [RegisterController::class, 'showForm']);
 Route::post('/register', [RegisterController::class, 'register']);
 
 Auth::routes(['verify' => true]);
@@ -28,3 +35,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/home', [PublicacionesController::class, 'index'])->name('publicaciones.home');
+
+Route::get('/publicacion/crear', [PublicacionesController::class, 'crear']);
+Route::post('/publicacion/guardar', [PublicacionesController::class, 'store']);
+
+Route::get('/publicacion/edit/{id}', [PublicacionesController::class, 'edit']);
+Route::post('/publicacion/update', [PublicacionesController::class, 'update']);

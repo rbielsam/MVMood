@@ -10,6 +10,9 @@
     <p>No hi ha publicacions</p>
 @endforelse
 <br>
+<a href="/perfil/editar/Auth::id()">Editar Perfil</a>
+
+<br>
 <a href="/publicacion/crear">Crea una publicacion</a>
 
 <br>

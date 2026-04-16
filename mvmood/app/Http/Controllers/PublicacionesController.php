@@ -44,6 +44,7 @@ class PublicacionesController extends Controller
 
     public function editar($id){
         $publicacion = Publicacion::findOrFail($id);
+        // falta implementar que no puede modificar la publicacion si ya han pasado 15min
         return view('publicaciones.editar', ['publicacion' => $publicacion]);
     }
 

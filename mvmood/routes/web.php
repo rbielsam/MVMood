@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -44,3 +45,6 @@ Route::post('/publicacion/guardar', [PublicacionesController::class, 'store']);
 Route::get('/publicacion/editar/{id}', [PublicacionesController::class, 'editar']);
 Route::post('/publicacion/update', [PublicacionesController::class, 'update']);
 Route::get('/publicacion/eliminar/{id}', [PublicacionesController::class, 'eliminar']);
+
+Route::get('/perfil/editar/{id}', [UserController::class, 'editarPerfil']);
+Route::post('/perfil/update', [UserController::class, 'updatePerfil']);

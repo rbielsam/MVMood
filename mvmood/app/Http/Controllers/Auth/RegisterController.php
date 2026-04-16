@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
-    public function showForm(){
+    public function showRegistrationForm(){
         return view('auth.register');
     }
     public function register(Request $request){

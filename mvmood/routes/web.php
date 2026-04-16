@@ -14,7 +14,7 @@ Route::get('/amvmood', [LoginController::class, 'showLogin']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'showForm']);
+Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
 Route::post('/register', [RegisterController::class, 'register']);
 
 Auth::routes(['verify' => true]);
@@ -41,5 +41,6 @@ Route::get('/home', [PublicacionesController::class, 'index'])->name('publicacio
 Route::get('/publicacion/crear', [PublicacionesController::class, 'crear']);
 Route::post('/publicacion/guardar', [PublicacionesController::class, 'store']);
 
-Route::get('/publicacion/edit/{id}', [PublicacionesController::class, 'edit']);
+Route::get('/publicacion/editar/{id}', [PublicacionesController::class, 'editar']);
 Route::post('/publicacion/update', [PublicacionesController::class, 'update']);
+Route::get('/publicacion/eliminar/{id}', [PublicacionesController::class, 'eliminar']);

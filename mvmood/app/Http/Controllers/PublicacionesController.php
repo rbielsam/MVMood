@@ -40,12 +40,23 @@ class PublicacionesController extends Controller
         // falta implementar ACL
         $publicacion->delete();
         return redirect()->route('publicaciones.home');
-
     }
 
     public function editar($id){
         $publicacion = Publicacion::findOrFail($id);
         return view('publicaciones.editar', ['publicacion' => $publicacion]);
+    }
+
+
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $nuevapublicacion = Publicacion::findOrFail($id);
+        $nuevapublicacion->contenido = $request->input('contenido');
+
+        $nuevapublicacion->save();
+
+        return redirect('/home');
     }
 
 }

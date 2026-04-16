@@ -38,5 +38,7 @@
         <button type="submit">Iniciar session</button>
     </div>
 </form>
+<a href="/register">Registrarse</a>
+
 </body>
 </html>

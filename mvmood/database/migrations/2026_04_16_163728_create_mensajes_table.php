@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid()->unique();
             $table->foreingId('chat_id')->constrained()->onDelete('cascade');
+            $table->foreingId('emisor_id')->constrained('users')->onDelete('cascade');
             $table->text('contenido');
             $table->timestamps();
         });

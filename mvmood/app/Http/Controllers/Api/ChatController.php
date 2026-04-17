@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chat;
-use App\Events\MensajeEnviado;
+use App\Events\EnviarMensaje;
 use Illuminate\Support\Str;
 
 class ChatController extends Controller
 {
-     public function enviar(Request $request)
+    public function enviar(Request $request)
     {
         $request->validate([
             'receptor_uuid' => 'required|exists:usuarios,uuid',
@@ -40,8 +40,24 @@ class ChatController extends Controller
         ]);
 
         // 3. Notificar a Pusher
-        broadcast(new MensajeEnviado($mensaje))->toOthers();
+        broadcast(new EnviarMensaje($mensaje))->toOthers();
 
         return response()->json($mensaje->load('emisor'), 201);
+    }
+
+    public function mostrarMensajes($chatUuid) {
+        $chat = Chat::where('uuid',$chatUuid)->whereHas('usuarios',fn($q) => $q->where('user_id', auth()->id()))->firstOrFail();
+
+        $mensajes = $chat->mensajes()->with('emisor')->orderBy('created_at', 'desc')->paginate(30);
+
+        return response()->json($mensajes);
+    }
+
+    public function misChats() {
+        $chats = auth()->user()->chats()->with(['usuarios','mensajes' => function($q) {
+            $q->latest()->first();
+        }])->get();
+
+        return response()->json($chats);
     }
 }

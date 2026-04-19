@@ -19,7 +19,7 @@ class ChatController extends Controller
         ]);
 
         $emisor = auth()->user();
-        $receptor = Usuario::where('uuid', $request->receptor_uuid)->first();
+        $receptor = User::where('uuid', $request->receptor_uuid)->first();
 
         // 1. Buscar o crear el chat 1 a 1
         $chat = Chat::whereHas('usuarios', fn($q) => $q->where('user_id', $emisor->id))

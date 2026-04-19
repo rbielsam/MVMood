@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('mensajes', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->foreingId('chat_id')->constrained()->onDelete('cascade');
-            $table->foreingId('emisor_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('chat_id')->constrained()->onDelete('cascade');
+            $table->foreignId('emisor_id')->constrained('users')->onDelete('cascade');
             $table->text('contenido');
             $table->timestamps();
         });

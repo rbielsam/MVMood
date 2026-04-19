@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Chat extends Model
 {
+    protected static function boot() {
+        parent::boot();
+        static::creating(fn($model) => $model->uuid = (string) \Illuminate\Support\Str::uuid());
+    }
+
     public function usuarios(): BelongsToMany {
         return $this->belongsToMany(User::class,'chat_user');
     }

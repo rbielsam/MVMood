@@ -10,10 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publicacion extends Model
 {
-    use HasUuids;
     protected $table = 'publicacion';
 
     public function comentarios() {
-        return $this->hasMany(Comentario::class);
+        return $this->hasMany(Comentario::class)->orderBy('created_at','desc');
     }
 }

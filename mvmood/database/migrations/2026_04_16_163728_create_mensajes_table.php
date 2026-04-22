@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mensajes', function (Blueprint $table) {
-            $table->id();
-            $table->uuid()->unique();
-            $table->foreignId('chat_id')->constrained()->onDelete('cascade');
-            $table->foreignId('emisor_id')->constrained('users')->onDelete('cascade');
+            $table->uuid()->unique()->primary();
+            $table->uuid('chat_id');
+            $table->foreignId('chat_id')->constrained('id')->on('chats')->onDelete('cascade');
+            $table->uuid('emisor_id');
+            $table->foreignId('emisor_id')->constrained('id')->on('users')->onDelete('cascade');
             $table->text('contenido');
             $table->timestamps();
         });

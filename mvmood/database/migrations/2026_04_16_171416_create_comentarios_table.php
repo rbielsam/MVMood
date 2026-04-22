@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->uuid('publicacion_id');
-            $table->foreign('publicacion_id')->references('publicacion')->onDelete('cascade');
+            $table->foreign('publicacion_id')->references('id')->on('publicacion')->onDelete('cascade');
             $table->uuid('user_id');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('contenido');
             $table->timestamps();
         });

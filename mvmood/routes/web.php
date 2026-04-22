@@ -11,12 +11,12 @@ use App\Http\Controllers\PublicacionesController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/amvmood', [LoginController::class, 'showLogin']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/logout', [LogoutController::class, 'logout']);
-
-Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
-Route::post('/register', [RegisterController::class, 'register']);
+Route::middleware('guest')->group(function () {
+    Route::get('/amvmood', [LoginController::class, 'showLogin']);
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
+    Route::post('/register', [RegisterController::class, 'register']);
+});
 
 Auth::routes(['verify' => true]);
 
@@ -36,15 +36,17 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::post('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/home', [PublicacionesController::class, 'index'])->name('publicaciones.home');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', [PublicacionesController::class, 'index'])->name('publicaciones.home');
+    Route::get('/publicacion/crear', [PublicacionesController::class, 'crear']);
+    Route::post('/publicacion/guardar', [PublicacionesController::class, 'store']);
+    Route::get('/publicacion/editar/{id}', [PublicacionesController::class, 'editar']);
+    Route::post('/publicacion/update', [PublicacionesController::class, 'update']);
+    Route::get('/publicacion/eliminar/{id}', [PublicacionesController::class, 'eliminar']);
+    Route::get('/perfil/editar/{id}', [UserController::class, 'editarPerfil']);
+    Route::post('/perfil/update', [UserController::class, 'updatePerfil']);
+});
 
-Route::get('/publicacion/crear', [PublicacionesController::class, 'crear']);
-Route::post('/publicacion/guardar', [PublicacionesController::class, 'store']);
 
-Route::get('/publicacion/editar/{id}', [PublicacionesController::class, 'editar']);
-Route::post('/publicacion/update', [PublicacionesController::class, 'update']);
-Route::get('/publicacion/eliminar/{id}', [PublicacionesController::class, 'eliminar']);
-
-Route::get('/perfil/editar/{id}', [UserController::class, 'editarPerfil']);
-Route::post('/perfil/update', [UserController::class, 'updatePerfil']);

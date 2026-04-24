@@ -12,7 +12,11 @@ class Publicacion extends Model
 {
     protected $table = 'publicacion';
 
-    public function comentarios() {
+    public function comentario() {
         return $this->hasMany(Comentario::class)->orderBy('created_at','desc');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

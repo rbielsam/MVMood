@@ -19,7 +19,7 @@ class LoginController extends Controller
                     'email',
                     'ends_with:@institutmvm.cat',
                 ],
-                'password' => ['required', 'min:6'],
+                'password' => ['required', 'min:8'],
             ]
         );
 
@@ -35,6 +35,13 @@ class LoginController extends Controller
                 'message' =>'Vefirica tu correo'
             ], 403);
         }
+
+        if($user->banned_at){
+            Auth::logout();
+            return response()->json([
+                'message' => 'Esta cuenta ha sido baneada'
+            ], 403);
+        }
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -44,6 +51,7 @@ class LoginController extends Controller
                 'id'        => $user->id,
                 'nickname'  => $user->nickname,
                 'email'     => $user->email,
+                'role'      => $user->role,
             ],
         ], 200);
     }

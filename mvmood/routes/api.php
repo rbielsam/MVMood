@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\ChatController;
+use App\Http\Controllers\Api\PublicacionesController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ChatController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,7 +21,23 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/publicaciones', [PublicacionesController::class, 'index']);
+    Route::post('/publicaciones', [PublicacionesController::class, 'store']);
+    Route::put('/publicaciones/{uuid}', [PublicacionesController::class, 'update']);
+    Route::delete('/publicaciones/{uuid}', [PublicacionesController::class, 'eliminar']);
+    Route::get('/publicaciones/{uuid}/likes', [PublicacionesController::class, 'likes']);
+    Route::get('/publicaciones/{uuid}/comentarios', [PublicacionesController::class, 'comentarios']);
+});
+
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/chats', [ChatController::class, 'misChats']);
     Route::get('/chats/{chatUuid}/mensajes', [ChatController::class, 'mostrarMensajes']);
     Route::post('/chats/enviar', [ChatController::class, 'enviar']);
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/perfil', [UserController::class, 'index']);
+    Route::post('/perfil', [UserController::class, 'updatePerfil']);
+    Route::put('/perfil/password', [UserController::class, 'changePassword']);
+
 });

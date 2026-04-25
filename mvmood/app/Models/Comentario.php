@@ -13,8 +13,8 @@ class Comentario extends Model
         parent::boot();
         static::creating(fn($model) => $model->uuid = (string) Str::uuid());
     }
-    
-    public function emisor(){
+
+    public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
 

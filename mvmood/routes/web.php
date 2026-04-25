@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\PublicacionesController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\PublicacionesController;
 
 Route::get('/', function () {
     return view('welcome');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Bloqueo;
+use App\Models\Bloqueo;
 use App\Http\Controllers\Controller;
 use App\Models\Publicacion;
 use Illuminate\Http\Request;
@@ -126,7 +126,7 @@ class PublicacionesController extends Controller
 
     public function comentarios($uuid){
         $publicacion = Publicacion::findOrFail($uuid);
-        $comentarios = $publicacion->comentario()
+        $comentarios = $publicacion->comentarios()
             ->with('user:id,nickname,foto_perfil')
             ->orderBy('created_at','desc')
             ->get();

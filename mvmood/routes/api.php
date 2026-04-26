@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\ChatController;
+use App\Http\Controllers\Api\ComentarioController;
 use App\Http\Controllers\Api\PublicacionesController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -27,6 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/publicaciones/{uuid}', [PublicacionesController::class, 'eliminar']);
     Route::get('/publicaciones/{uuid}/likes', [PublicacionesController::class, 'likes']);
     Route::get('/publicaciones/{uuid}/comentarios', [PublicacionesController::class, 'comentarios']);
+    Route::post('/publicaciones/{uuid}/comentarios', [ComentarioController::class, 'store']);
+    Route::delete('/comentarios/{uuid}', [ComentarioController::class, 'eliminar']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -41,3 +44,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/perfil/password', [UserController::class, 'changePassword']);
 
 });
+

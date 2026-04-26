@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\belongsToMany;
 
-#[Fillable(['nickname', 'email', 'password'])]
+#[Fillable(['nickname', 'email', 'password', 'foto_perfil'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements MustVerifyEmail
 
@@ -30,8 +30,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'email_verified_at' => 'datetime',
+            'banned_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->rol === 'admin';
+    }
+
+    public function isBanned(): bool
+    {
+        return !is_null($this->banned_at);
     }
 
     public function publicacion()
@@ -42,6 +53,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function likes()
     {
         return $this->hasMany(Like::class, 'user_id');
+    }
+
+    public function comentarios(){
+        return $this->hasMany(Comentario::class, 'user_id');
+    }
+
+    public function bloqueados()
+    {
+        return $this->hasMany(Bloqueo::class, 'bloqueador_id');
     }
 
     public function chats() {

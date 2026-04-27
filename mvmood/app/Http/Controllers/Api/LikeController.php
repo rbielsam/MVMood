@@ -25,7 +25,7 @@ class LikeController extends Controller
         if ($likeExiste){
             return response()->json([
                 'message' => 'Ya ha hecho like a esta publicacion',
-            ], 403);
+            ], 409);
         }
 
         Like::create([
@@ -36,7 +36,7 @@ class LikeController extends Controller
 
         return response()->json([
             'message' => 'Ha hecho like a esta publicacion',
-            'likes_count' => $publicacion->likes->count(),
+            'likes_count' => $publicacion->likes()->count(),
         ], 201);
     }
 }

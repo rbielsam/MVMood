@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\BloqueoController;
 use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\ComentarioController;
 use App\Http\Controllers\Api\LikeController;
@@ -47,3 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/usuarios/bloqueados', [BloqueoController::class, 'listaBloqueados']);
+    Route::post('/usuarios/{uuid}/bloquear', [BloqueoController::class, 'bloquear']);
+});

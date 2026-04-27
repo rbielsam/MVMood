@@ -23,6 +23,6 @@ class Publicacion extends Model
 
     public function likes()
     {
-        return $this->hasMany(Publicacion::class, 'publicacion_id');
+        return $this->hasMany(Like::class, 'publicacion_id');
     }
 }

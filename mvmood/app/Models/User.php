@@ -45,7 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return !is_null($this->banned_at);
     }
 
-    public function publicacion()
+    public function publicaciones()
     {
         return $this->hasMany(Publicacion::class, 'user_id');
     }

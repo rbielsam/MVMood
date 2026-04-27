@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\ComentarioController;
+use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\PublicacionesController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/publicaciones/{uuid}/comentarios', [PublicacionesController::class, 'comentarios']);
     Route::post('/publicaciones/{uuid}/comentarios', [ComentarioController::class, 'store']);
     Route::delete('/comentarios/{uuid}', [ComentarioController::class, 'eliminar']);
+    Route::post('/publicaciones/{uuid}/like', [LikeController::class, 'guardarLike']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {

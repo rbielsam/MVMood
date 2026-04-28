@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\HasApiTokens;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -42,7 +44,7 @@ class LoginController extends Controller
                 'message' => 'Esta cuenta ha sido baneada'
             ], 403);
         }
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = User::where('email', $request->email)->first()->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'token' => $token,

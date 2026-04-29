@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/publicaciones', [PublicacionesController::class, 'index']);
-    Route::post('/publicaciones', [PublicacionesController::class, 'store']);
+    Route::get('/home', [PublicacionesController::class, 'index']);
+    Route::post('/create', [PublicacionesController::class, 'store']);
     Route::put('/publicaciones/{uuid}', [PublicacionesController::class, 'update']);
     Route::delete('/publicaciones/{uuid}', [PublicacionesController::class, 'eliminar']);
     Route::get('/publicaciones/{uuid}/likes', [PublicacionesController::class, 'likes']);

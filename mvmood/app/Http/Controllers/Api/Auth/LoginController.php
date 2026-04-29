@@ -34,7 +34,7 @@ class LoginController extends Controller
         if(!$user->hasVerifiedEmail()){
             Auth::logout();
             return response()->json([
-                'message' =>'Vefirica tu correo'
+                'message' =>'Verifica tu correo'
             ], 403);
         }
 

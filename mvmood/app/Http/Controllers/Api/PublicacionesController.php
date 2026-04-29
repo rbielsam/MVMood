@@ -37,9 +37,10 @@ class PublicacionesController extends Controller
     }*/
 
     public function store(Request $request){
+        $user = Auth::user();
         if (Auth::user()->isAdmin()){
             return response()->json([
-                'message' => 'El dministrador no pede crear publicaciones',
+                'message' => 'El administrador no pede crear publicaciones',
             ], 403);
         }
         $request->validate([

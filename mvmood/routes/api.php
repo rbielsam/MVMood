@@ -15,6 +15,14 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/email/verify/status', function (Request $request) {
+        return response()->json([
+            'verified' => $request->user()->hasVerifiedEmail()
+        ]);
+    });
+
+});
 
 Route::post('/register', [RegisterController::class, 'register']);
 

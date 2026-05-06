@@ -1,10 +1,19 @@
 <?php
-
-
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-    return redirect(env('FRONT_URL', 'http://localhost:5173').'/login?verified=1');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
+
+    $user = User::findOrFail($id);
+
+    if ($user->hasVerifiedEmail()) {
+        return redirect(env('FRONTEND_URL') . '/email-verified?status=already');
+    }
+
+    $user->markEmailAsVerified();
+
+    return redirect(env('FRONTEND_URL') . '/email-verified?status=success');
+
+})->middleware('signed')->name('verification.verify');

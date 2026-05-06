@@ -21,16 +21,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         VerifyEmail::toMailUsing(function ($notifiable, $url) {
-            // separamos la url del front, para reconstruirla
-            $nuevaUrl = parse_url($url);
-            $path = $nuevaUrl['path'];
-            $query = $nuevaUrl['query'];
-
-            $frontUrl = env('FRONT_URL', 'http://localhost:5173').$path.'?'.$query;
             return (new MailMessage)
                 ->subject('Verifica tu correo')
                 ->line('Haz clic en el botón para verificar tu correo')
-                ->action('Verify Email Address', $frontUrl);
+                ->action('verifica to correo', $url);
         });
     }
 }

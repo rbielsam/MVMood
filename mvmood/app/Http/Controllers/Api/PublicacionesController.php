@@ -120,10 +120,28 @@ class PublicacionesController extends Controller
 
         $request->validate([
             'contenido' => ['required', 'max:500'],
+            'imagen' => ['nullable', 'image']
         ], [
             'contenido.required' => 'Es contenido es obligatorio',
             'contenido.max' => 'El contenido no debe superar 500 caracteres',
         ]);
+
+        if ($request->hasFile('imagen')) {
+            if ($publicacion->imagen && \Storage::disk('public')->exists($publicacion->imagen)) {
+                \Storage::disk('public')->delete($publicacion->imagen);
+            }
+
+            $fecha = now()->format('Ymd_His');
+            $userId = Auth::id();
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+            $imageName = "{$fecha}_user{$userId}.{$extension}";
+
+            $imagenUrl = $request->file('imagen')->storeAs('publicaciones', $imageName, 'public');
+
+            $publicacion->imagen = $imagenUrl;
+            $publicacion->save();
+
+        }
 
         $publicacion->update([
             'contenido' => $request->input('contenido'),

@@ -45,16 +45,33 @@ class PublicacionesController extends Controller
         }
         $request->validate([
             'contenido' => ['required', 'max:500'],
+            'imagen' => ['nullable', 'image']
         ], [
             'contenido.required' => 'Es necesario ingresar un contenido',
                 'contenido.max' => 'El contenido no debe superar 500 caracteres',
             ]
         );
 
+        $imagenUrl = null;
+        if ($request->hasFile('imagen')) {
+            // Obtenemos la fecha actual
+            $fecha = now()->format('Ymd_His');
+
+            // Obtenemos user_id
+            $userId = Auth::id();
+
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+
+            $imageName = "{$fecha}_user{$userId}.{$extension}";
+
+            $imagenUrl = $request->file('imagen')->storeAs('publicaciones', $imageName, 'public');
+        }
+
         $publicacion = Publicacion::create([
             'user_id'   => Auth::id(),
             'contenido' => $request->input('contenido'),
-            'imagen'     => null,
+            'imagen' => $imagenUrl,
+            //'imagen'     => null,
         ]);
 
         return response()->json([

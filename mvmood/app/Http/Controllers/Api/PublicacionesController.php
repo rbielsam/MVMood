@@ -47,7 +47,7 @@ class PublicacionesController extends Controller
             'contenido' => ['required', 'max:500'],
             'imagen' => ['nullable', 'image']
         ], [
-            'contenido.required' => 'Es necesario ingresar un contenido',
+                'contenido.required' => 'Es necesario ingresar un contenido',
                 'contenido.max' => 'El contenido no debe superar 500 caracteres',
             ]
         );
@@ -156,7 +156,7 @@ class PublicacionesController extends Controller
     public function likes($uuid){
         $publicacion = Publicacion::findOrFail($uuid);
         $likes = $publicacion->likes()->with('user:id,nickname,foto_perfil')->get()
-        ->map(fn($like) => $like->user);
+            ->map(fn($like) => $like->user);
         return response()->json($likes, 200);
     }
 
@@ -170,3 +170,4 @@ class PublicacionesController extends Controller
     }
 
 }
+

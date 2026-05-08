@@ -23,9 +23,10 @@ class LikeController extends Controller
             ->exists();
 
         if ($likeExiste){
+            $likeExiste->destroy($uuid);
             return response()->json([
-                'message' => 'Ya ha hecho like a esta publicacion',
-            ], 409);
+                'message' => 'Se ha borrado el like',
+            ], 201);
         }
 
         Like::create([

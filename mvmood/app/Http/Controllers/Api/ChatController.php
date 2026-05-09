@@ -14,12 +14,14 @@ class ChatController extends Controller
     public function enviar(Request $request)
     {
         $request->validate([
-            'receptor_uuid' => 'required|exists:usuarios,uuid',
+            //'receptor_uuid' => 'required|exists:usuarios,uuid',
+            'receptor_id' => 'required|integer',
             'contenido' => 'required|string',
         ]);
 
         $emisor = auth()->user();
-        $receptor = User::where('uuid', $request->receptor_uuid)->first();
+        //$receptor = User::where('uuid', $request->receptor_uuid)->first();
+        $receptor = User::find($request->receptor_id);
 
         // 1. Buscar o crear el chat 1 a 1
         $chat = Chat::whereHas('usuarios', fn($q) => $q->where('user_id', $emisor->id))

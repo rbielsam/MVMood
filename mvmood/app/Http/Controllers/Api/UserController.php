@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -86,4 +87,8 @@ class UserController extends Controller
             'message' => 'Se ha actualizado la contraseña correctamente. Vuelve a iniciar sesión'
         ], 200);
     }
-}
+
+    public function getUsers() {
+        return User::select('id', 'nickname', 'foto_perfil')->where('id', '!=', auth()->id())->get();
+    }
+ }

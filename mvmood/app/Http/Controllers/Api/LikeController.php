@@ -18,14 +18,16 @@ class LikeController extends Controller
         }
 
         $publicacion = Publicacion::findOrFail($uuid);
+
         $likeExiste= Like::where('user_id', Auth::id())
             ->where('publicacion_id', $publicacion->id)
-            ->exists();
+            ->first();
 
-        if ($likeExiste){
-            $likeExiste->destroy($uuid);
+        if ( $likeExiste){
+            $likeExiste->delete();
             return response()->json([
                 'message' => 'Se ha borrado el like',
+                'likes_count' => $publicacion->likes()->count(),
             ], 201);
         }
 

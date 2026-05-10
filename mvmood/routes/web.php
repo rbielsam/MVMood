@@ -9,11 +9,11 @@ Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) 
     $user = User::findOrFail($id);
 
     if ($user->hasVerifiedEmail()) {
-        return redirect(env('FRONTEND_URL') . '/email-verified?status=already');
+        return redirect(env('FRONTEND_URL') . '/?verified=already');
     }
 
     $user->markEmailAsVerified();
 
-    return redirect(env('FRONTEND_URL') . '/email-verified?status=success');
+    return redirect(env('FRONTEND_URL') . '/?verified=1');
 
 })->middleware('signed')->name('verification.verify');

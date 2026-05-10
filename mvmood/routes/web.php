@@ -3,6 +3,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\Mensaje;
+use App\Events\EnviarMensaje;
 
 Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
 
@@ -17,3 +19,9 @@ Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) 
     return redirect(env('FRONTEND_URL') . '/email-verified?status=success');
 
 })->middleware('signed')->name('verification.verify');
+
+//Route::get('/test-pusher', function () {
+//    $mensaje = Mensaje::first();
+//    event(new EnviarMensaje($mensaje));
+//    return "Evento enviado correctamente";
+//});

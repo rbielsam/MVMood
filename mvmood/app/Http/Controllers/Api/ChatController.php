@@ -51,7 +51,7 @@ class ChatController extends Controller
 
         // 3. Notificar a Pusher
         broadcast(new EnviarMensaje($mensaje))->toOthers();
-
+        \Log::info("Disparando evento en chat: " . $chat->id);
         //return response()->json($mensaje->load('emisor'), 201);
         return response()->json([
             //'chat' => $chat->load('usuarios'),

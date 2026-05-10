@@ -14,14 +14,14 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        // php artisan make:seeder 'nombre'
-        User::create([
+        // php artisan make:seeder 'AdminSeeder'
+        User::forceCreate([
             'nickname' => 'admin',
-            'email'    => 'firstadmin@institutmvm.cat',
-            'password' => Hash::make('firstadmin123'),
+            'email'    => 'soloadmin@institutmvm.cat',
+            'password' => Hash::make('soloadmin123'),
             'rol'      => 'admin',
             'email_verified_at' => now(),
         ]);
-        // php artisan db:see --class='nombre'
+        // php artisan db:see --class='AdminSeeder'
     }
 }

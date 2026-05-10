@@ -10,6 +10,10 @@ use App\Http\Controllers\Api\PublicacionesController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\support\Facades\Broadcast;
+
+
+//Broadcast::routes(['middleware' => ['auth:sanctum']]);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -46,7 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/chats', [ChatController::class, 'misChats']);
-    Route::get('/chats/{chatUuid}/mensajes', [ChatController::class, 'mostrarMensajes']);
+    Route::get('/chats/{chatId}/mensajes', [ChatController::class, 'mostrarMensajes']);
     Route::post('/chats/enviar', [ChatController::class, 'enviar']);
 });
 

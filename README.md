@@ -5,3 +5,4 @@ mvmood -> Aplcacion actual.<br>
 Hay 3 branches pero por voto popular al final se hizo todo en main a pesar de la posibilidad de los conflictos.<br>
 
 Para un inicio rapido, ejecutar setup.sh
+Para esto es necesario tener instalado composer

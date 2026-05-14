@@ -14,16 +14,23 @@ class LoginController extends Controller
      * Display a listing of the resource.
      */
     public function login(Request $request){
-        $request->validate(
-            [
-                'email' => [
-                    'required',
-                    'email',
-                    'ends_with:@institutmvm.cat',
-                ],
-                'password' => ['required', 'min:8'],
-            ]
-        );
+        try {
+                $request->validate(
+                    [
+                        'email' => [
+                            'required',
+                            'email',
+                            'ends_with:@institutmvm.cat',
+                        ],
+                        'password' => ['required', 'min:8'],
+                    ]
+                );
+        } catch (\Exception $error) {
+            return response()->json([
+                'message' => 'La contraseña ha de tener 8 carácteres como mínimo o falta el correo'
+            ], 401);
+        }
+
 
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([

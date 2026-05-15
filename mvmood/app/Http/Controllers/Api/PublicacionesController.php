@@ -122,7 +122,7 @@ class PublicacionesController extends Controller
             'contenido' => ['required', 'max:500'],
             'imagen' => ['nullable', 'image']
         ], [
-            'contenido.required' => 'Es contenido es obligatorio',
+            'contenido.required' => 'El contenido es obligatorio',
             'contenido.max' => 'El contenido no debe superar 500 caracteres',
         ]);
 

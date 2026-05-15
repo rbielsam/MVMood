@@ -6,10 +6,11 @@ mvmood -> Aplcacion actual.<br>
 Hay 3 branches pero por voto popular al final se hizo todo en main a pesar de la posibilidad de los conflictos.<br>
 
 Por temas de permisos y entornos, antes de la ejecucion del setup.sh, es necesario llevar a cabo los siguientes pasos previos:<br>
-**Pasos Previos**
-***1: Acceder a tu mysql en la terminal***
-  mysql -u root -p
-***2: Ejecutar los siguientes comandos***
+
+**Pasos Previos**<br>
+***1: Acceder a tu mysql en la terminal***<br>
+  mysql -u root -p<br>
+***2: Ejecutar los siguientes comandos***<br>
   
   CREATE DATABASE IF NOT EXISTS mvmood;
   

@@ -95,13 +95,12 @@ class UserController extends Controller
     public function deleteUser(Request $request) {
         $user = Auth::user();
 
-        $user.mensajes()->delete();
-        $user.chats()->delete();
-        $user.comentarios()->delete();
-        $user.likes()->delete();
-        $user.publicaciones()->delete();
-        $user.tokens()->delete();
-        $user.delete();
+        $user->chats()->delete();
+        $user->comentarios()->delete();
+        $user->likes()->delete();
+        $user->publicaciones()->delete();
+        $user->tokens()->delete();
+        $user->delete();
 
         return response()->json([
             'message' => 'Usuario eliminado'

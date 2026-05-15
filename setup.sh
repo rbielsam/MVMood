@@ -1,12 +1,22 @@
 #!/bin/bash
 echo "Iniciando instalacion"
+echo "Para instalar dependencias se usa sudo apt, por favor introducir contraseña usuario actual"
+sudo apt install php php-xml php-cli php-mysql php-curl
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+sudo mv composer.phar /usr/local/bin/composer
+echo "Composer instalado"
 cd mvmood
 composer install
 cp .env.example .env
 php artisan key:generate
 sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env
 echo "DB_HOST=127.0.0.1" >> .env
-echo "DB_PORT=3306" >> .env
+echo "DB_PORT=4000" >> .env
 echo "DB_DATABASE=mvmood" >> .env
 echo "DB_USERNAME=deploy" >> .env
 echo "DB_PASSWORD=1234" >> .env

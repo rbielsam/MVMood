@@ -9,20 +9,10 @@ Por temas de permisos y entornos, antes de la ejecucion del setup.sh, es necesar
 
 **Pasos Previos**<br>
 
-***1: Instalar php, extensiones y composer***<br>
-  apt install php php-xml php-cli php-mysql php-curl<br>
-
-  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"<br>
-  php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"<br>
-  php composer-setup.php<br>
-  php -r "unlink('composer-setup.php');"<br>
-
-  mv composer.phar /usr/local/bin/composer<br>
-
-***2: Acceder a tu mysql en la terminal***<br>
+***1: Acceder a tu mysql en la terminal***<br>
   mysql -u root -p<br>
 
-***3: Ejecutar los siguientes comandos***<br>
+***2: Ejecutar los siguientes comandos***<br>
   
   CREATE DATABASE IF NOT EXISTS mvmood;
   
@@ -34,5 +24,13 @@ Por temas de permisos y entornos, antes de la ejecucion del setup.sh, es necesar
   
   EXIT;<br>
 
-**4: Ejecutar setup.sh donde se encuentra***<br>
+**3: Ejecutar setup.sh donde se encuentra***<br>
   ./setup
+
+**Posibles problemas**
+
+En los test hechos hasta ahora los problemas mas comunes es que por tipo de sistema puede haber fallos
+Tambien puede que el puerto de Mysql este ocupado, en este caso se deberia cambiar tanto en el archivo .env como en el archivo de configuracion de mysql para que pueda escuchar otro puerto, el nombre del archivo puede ser uno de estos:
+
+/etc/mysql/mysql.conf.d/mysqld.cnf
+/etc/mysql/my.cnf

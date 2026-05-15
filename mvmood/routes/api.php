@@ -59,7 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/perfil', [UserController::class, 'updatePerfil']);
     Route::put('/perfil/password', [UserController::class, 'changePassword']);
     Route::get('/users', [UserController::class, 'getUsers']);
-
+    Route::delete('/perfil/delete', [UserController::class, 'deleteUser']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {

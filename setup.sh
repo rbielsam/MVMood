@@ -1,11 +1,15 @@
 #!/bin/bash
-
+echo "Iniciando instalacion"
 cd mvmood
 composer install
 cp .env.example .env
 php artisan key:generate
-#sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env
-
+sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env
+sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env
+sed -i 's/^DB_PORT=.*/DB_PORT=3306/' .env
+sed -i 's/^DB_DATABASE=.*/DB_DATABASE=mvmood/' .env
+sed -i 's/^DB_USERNAME=.*/DB_USERNAME=deploy/' .env
+sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=1234/' .env
 
 php artisan install:broadcasting --no-interaction
 

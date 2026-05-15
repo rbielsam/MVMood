@@ -1,4 +1,4 @@
-**Introduccion**
+**Introduccion**<br>
 LarMvmood -> Primer intento de migrar contenidos de carpeta MVMood(de PHP MVC a Laravel).<br>
 MVMood -> Aplicacion en PHP, HTML y CSS nativos.<br>
 mvmood -> Aplcacion actual.<br>
@@ -19,6 +19,6 @@ Por temas de permisos y entornos, antes de la ejecucion del setup.sh, es necesar
   
   FLUSH PRIVILEGES;
   
-  EXIT;
+  EXIT;<br>
 **3: Ejecutar setup.sh donde se encuentra***
   ./setup

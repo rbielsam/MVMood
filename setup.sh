@@ -14,6 +14,7 @@ echo "DB_PASSWORD=1234" >> .env
 php artisan install:broadcasting --no-interaction
 
 sed -i 's/^BROADCAST_DRIVER=.*/BROADCAST_DRIVER=pusher/' .env
+sed -i 's/^BROADCAST_CONNECTION=.*/BROADCAST_CONNECTION=pusher/' .env
 echo "PUSHER_APP_ID=2143530" >> .env
 echo "PUSHER_APP_KEY=fc768dea3d34d2690a2f" >> .env
 echo "PUSHER_APP_SECRET=97c14b40d5644ab640a9" >> .env
